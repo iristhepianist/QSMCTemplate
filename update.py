@@ -43,11 +43,14 @@ if tomllib is None:
 class DownloadFile:
     name: str
     filename: str
-    project_id: str
+    project_id: str  # can be CurseForge numeric id or a direct URL
 
     @property
     def url(self):
-        # curseforge file URL; project_id is of the form "XYZ123.jar"
+        # if project_id looks like a URL just use it directly
+        if self.project_id.startswith("http"):
+            return self.project_id
+        # otherwise treat as CurseForge file ID
         first, last = self.project_id[:-3], self.project_id[-3:]
         return (
             f"https://edge.forgecdn.net/files/{first}/{last}/"
@@ -153,15 +156,20 @@ def main():
         if (mods_path / mn).exists():
             skipped += 1
         else:
-            # look for a CurseForge file-id; if it's missing we can't download
             cf_section = data.get("update", {}).get("curseforge", {})
             cfid = cf_section.get("file-id")
-            if not cfid:
-                print(f"warning: no curseforge file-id for '{mn}', skipping download")
-            else:
+            mr_section = data.get("update", {}).get("modrinth", {})
+            mr_url = mr_section.get("url")
+            if cfid:
                 downloaded.append(
                     DownloadFile(data.get("name", "?"), mn, str(cfid))
                 )
+            elif mr_url:
+                downloaded.append(
+                    DownloadFile(data.get("name", "?"), mn, mr_url)
+                )
+            else:
+                print(f"warning: no curseforge/modrinth info for '{mn}', skipping download")
 
     # find extraneous jars
     if mods_path.exists():

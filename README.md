@@ -75,27 +75,34 @@ ld.yml
 If you want the workflow to create or update GitHub releases, you need a
 personal access token (PAT) with `repo` (or `public_repo`) and
 `repo:releases` scopes.  Add it as a repository secret (e.g. named
-`GH_PAT`).  Then modify the workflow to pass that secret directly to the
-release action.  Example snippet:
+`GH_PAT`).
+
+Releases are only created when the workflow is triggered by a **tag push**;
+GitHub requires a real git tag for a release.  Pushing to a branch such as
+`main` will still build the pack and upload the artifact, but it won’t open a
+release or fail with a 422.  To publish a new release, tag the commit first
+and push the tag:
+
+```bash
+git tag v1.2.3
+git push origin v1.2.3
+```
+
+Then the workflow will run and use `ref_name` (the tag name) for the release
+name and tag.
+
+Example snippet in your workflow:
 
 ```yaml
 - name: Create GitHub release
+  if: startsWith(github.ref, 'refs/tags/')
   uses: ncipollo/release-action@v1
   with:
-    tag: ${{ github.ref }}
-    name: ${{ github.ref }}
+    tag: ${{ github.ref_name }}       # drop the refs/ prefix
+    name: ${{ github.ref_name }}
     token: ${{ secrets.GH_PAT }}   # <--- supply PAT here
 ```
 
-(The action reads the `token` input, not the `GITHUB_TOKEN` environment
-variable; using the default `github.token` or omitting this will often lead
-to a 403.)
-
-> **Tip:** the step in the provided workflow already checks that `GH_PAT`
-> is non‑empty and is allowed to fail silently (`continue-on-error`).
-> That way a missing or invalid token won't make the whole build report a
-> failure – you'll still get the ZIP artifact and can fix the token later.
-> A 403 error means the token either isn't set or lacks the proper scopes.
 
 This step is optional; you can simply download the ZIP artifact instead of
 using releases.

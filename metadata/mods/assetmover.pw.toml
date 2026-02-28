@@ -1,0 +1,17 @@
+filename = 'assetmover-2.5.jar'
+name = 'AssetMover'
+side = ''
+x-prismlauncher-loaders = [ 'forge' ]
+x-prismlauncher-mc-versions = [ '1.12.2' ]
+x-prismlauncher-release-type = 'release'
+x-prismlauncher-version-number = 'assetmover-2.5.jar'
+
+[download]
+hash = 'b147ada093f5552fdedee9b7ee0de1d99b6f3c06'
+hash-format = 'sha1'
+mode = 'metadata:curseforge'
+url = ''
+
+[update.curseforge]
+file-id = 4430763
+project-id = 571482

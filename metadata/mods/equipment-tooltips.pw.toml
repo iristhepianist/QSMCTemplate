@@ -1,0 +1,17 @@
+filename = 'EquipmentTooltips-1.12.2-1.0.3-4.jar'
+name = 'Equipment Tooltips'
+side = ''
+x-prismlauncher-loaders = []
+x-prismlauncher-mc-versions = [ '1.12.2' ]
+x-prismlauncher-release-type = 'release'
+x-prismlauncher-version-number = 'EquipmentTooltips-1.12.2-1.0.3-4.jar'
+
+[download]
+hash = '179dd86a41c18fa5170b9357165a15588e7e440b'
+hash-format = 'sha1'
+mode = 'metadata:curseforge'
+url = ''
+
+[update.curseforge]
+file-id = 2563651
+project-id = 293973

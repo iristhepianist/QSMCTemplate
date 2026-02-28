@@ -1,0 +1,17 @@
+filename = 'BlahajASM-5.29.jar'
+name = 'BlahajASM'
+side = ''
+x-prismlauncher-loaders = [ 'forge' ]
+x-prismlauncher-mc-versions = [ '1.12.2' ]
+x-prismlauncher-release-type = 'release'
+x-prismlauncher-version-number = 'BlahajASM 5.29'
+
+[download]
+hash = 'cefd047c097321803515ad51f2023cd8d5e9c429'
+hash-format = 'sha1'
+mode = 'metadata:curseforge'
+url = ''
+
+[update.curseforge]
+file-id = 6861922
+project-id = 1081696

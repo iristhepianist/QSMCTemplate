@@ -1,0 +1,17 @@
+filename = 'Controlling-3.0.12.4.jar'
+name = 'Controlling'
+side = ''
+x-prismlauncher-loaders = [ 'forge' ]
+x-prismlauncher-mc-versions = [ '1.12.2' ]
+x-prismlauncher-release-type = 'release'
+x-prismlauncher-version-number = 'Controlling-3.0.12.4.jar'
+
+[download]
+hash = 'd588b1fefb912c1080d397834b6300e59409183c'
+hash-format = 'sha1'
+mode = 'metadata:curseforge'
+url = ''
+
+[update.curseforge]
+file-id = 5408385
+project-id = 250398

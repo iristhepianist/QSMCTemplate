@@ -1,0 +1,17 @@
+filename = 'lemonskin-3.1.0.jar'
+name = 'LemonSkin (AppleSkin Fork)'
+side = ''
+x-prismlauncher-loaders = [ 'forge' ]
+x-prismlauncher-mc-versions = [ '1.12.2' ]
+x-prismlauncher-release-type = 'release'
+x-prismlauncher-version-number = 'LemonSkin v3.1.0'
+
+[download]
+hash = 'c5b285c7e45077c8f002ae5c04520c8ae26ce263'
+hash-format = 'sha1'
+mode = 'metadata:curseforge'
+url = ''
+
+[update.curseforge]
+file-id = 7397823
+project-id = 1337144

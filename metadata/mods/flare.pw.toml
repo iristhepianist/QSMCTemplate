@@ -1,0 +1,17 @@
+filename = 'flare-0.7.0.jar'
+name = 'Flare (Spark for 1.12.2)'
+side = ''
+x-prismlauncher-loaders = [ 'forge' ]
+x-prismlauncher-mc-versions = [ '1.12.2' ]
+x-prismlauncher-release-type = 'beta'
+x-prismlauncher-version-number = 'Flare 0.7.0'
+
+[download]
+hash = '73c99e9a1c530880f4dd6d2646a5e8cd08eaf6c0'
+hash-format = 'sha1'
+mode = 'metadata:curseforge'
+url = ''
+
+[update.curseforge]
+file-id = 6598523
+project-id = 692142

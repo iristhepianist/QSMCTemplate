@@ -1,0 +1,17 @@
+filename = 'CosmeticArmorReworked-1.12.2-v5a.jar'
+name = 'Cosmetic Armor Reworked'
+side = ''
+x-prismlauncher-loaders = []
+x-prismlauncher-mc-versions = [ '1.12.1', '1.12.2' ]
+x-prismlauncher-release-type = 'release'
+x-prismlauncher-version-number = 'CosmeticArmorReworked-1.12.2-v5a.jar'
+
+[download]
+hash = 'dae97e0a1539702b07ffa5e48410e57c470e3bd0'
+hash-format = 'sha1'
+mode = 'metadata:curseforge'
+url = ''
+
+[update.curseforge]
+file-id = 2937869
+project-id = 237307

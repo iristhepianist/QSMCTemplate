@@ -1,0 +1,17 @@
+filename = '!improved-relauncher-0.3.6.jar'
+name = 'Improved Cleanroom Relauncher'
+side = ''
+x-prismlauncher-loaders = [ 'forge' ]
+x-prismlauncher-mc-versions = [ '1.12.2' ]
+x-prismlauncher-release-type = 'release'
+x-prismlauncher-version-number = '!improved-relauncher-0.3.6.jar'
+
+[download]
+hash = '929e6b38ad2b781ea5893d635e536411bad0060b'
+hash-format = 'sha1'
+mode = 'metadata:curseforge'
+url = ''
+
+[update.curseforge]
+file-id = 7127770
+project-id = 1336201

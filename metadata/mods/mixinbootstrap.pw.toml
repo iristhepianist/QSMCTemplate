@@ -1,0 +1,17 @@
+filename = '_MixinBootstrap-1.1.0.jar'
+name = 'MixinBootstrap'
+side = ''
+x-prismlauncher-loaders = [ 'forge' ]
+x-prismlauncher-mc-versions = [ '1.12.2', '1.14.4', '1.15.2', '1.16.5', '1.17.1' ]
+x-prismlauncher-release-type = 'release'
+x-prismlauncher-version-number = 'MixinBootstrap-1.1.0.jar'
+
+[download]
+hash = 'f9173708d3d2850ab8df778b9594b81cb94b1df8'
+hash-format = 'sha1'
+mode = 'metadata:curseforge'
+url = ''
+
+[update.curseforge]
+file-id = 3437402
+project-id = 357178

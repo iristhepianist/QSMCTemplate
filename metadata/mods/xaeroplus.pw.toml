@@ -1,0 +1,17 @@
+filename = 'XaeroPlus-Forge-1.12.2-183-WM1.40.6-MM25.3.5.jar'
+name = 'XaeroPlus'
+side = 'client'
+x-prismlauncher-loaders = [ 'forge' ]
+x-prismlauncher-mc-versions = [ '1.12.2', '1.12.2' ]
+x-prismlauncher-release-type = 'release'
+x-prismlauncher-version-number = '183'
+
+[download]
+hash = '463bb394e073d74f52b37ae81e0f6a6710cf4812a9ade73b47113023f5b70879a850b6709c4529d3d6c8954466e7a6d98fb83e2e128943af215c0e1757d8294a'
+hash-format = 'sha512'
+mode = 'url'
+url = 'https://cdn.modrinth.com/data/EnPUzSTg/versions/9iHJDyHL/XaeroPlus-Forge-1.12.2-183-WM1.40.6-MM25.3.5.jar'
+
+[update.modrinth]
+mod-id = 'EnPUzSTg'
+version = '9iHJDyHL'

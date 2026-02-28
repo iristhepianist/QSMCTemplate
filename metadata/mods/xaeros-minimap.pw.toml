@@ -1,0 +1,17 @@
+filename = 'xaerominimap-forge-1.12.2-25.3.5.jar'
+name = "Xaero's Minimap"
+side = 'both'
+x-prismlauncher-loaders = [ 'forge' ]
+x-prismlauncher-mc-versions = [ '1.12.2', '1.12.2' ]
+x-prismlauncher-release-type = 'release'
+x-prismlauncher-version-number = 'forge-1.12.2-25.3.5'
+
+[download]
+hash = '05e90584648428e4e8a5dde8cf00e2146bd2f19cce1c7a144b95dea5f9b8c500a0015fadcba711846a481770e5c92c5d8cf6fb2e9ce368c60492bffd3626af2e'
+hash-format = 'sha512'
+mode = 'url'
+url = 'https://cdn.modrinth.com/data/1bokaNcj/versions/2TSNHsFY/xaerominimap-forge-1.12.2-25.3.5.jar'
+
+[update.modrinth]
+mod-id = '1bokaNcj'
+version = '2TSNHsFY'

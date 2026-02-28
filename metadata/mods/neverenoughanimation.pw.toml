@@ -1,0 +1,17 @@
+filename = 'neverenoughanimations-1.0.7.jar'
+name = 'NeverEnoughAnimation'
+side = ''
+x-prismlauncher-loaders = [ 'forge' ]
+x-prismlauncher-mc-versions = [ '1.12.2' ]
+x-prismlauncher-release-type = 'release'
+x-prismlauncher-version-number = 'NeverEnoughAnimations − 1.0.7'
+
+[download]
+hash = 'a26586467433467ba4b1f1bb0acdeabb7ed2fa67'
+hash-format = 'sha1'
+mode = 'metadata:curseforge'
+url = ''
+
+[update.curseforge]
+file-id = 7289408
+project-id = 1062347

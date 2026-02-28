@@ -1,0 +1,17 @@
+filename = 'OreLib-1.12.2-3.6.0.1.jar'
+name = 'OreLib'
+side = ''
+x-prismlauncher-loaders = [ 'forge' ]
+x-prismlauncher-mc-versions = [ '1.12.2' ]
+x-prismlauncher-release-type = 'release'
+x-prismlauncher-version-number = 'OreLib-1.12.2-3.6.0.1.jar'
+
+[download]
+hash = '5debb0481552c54bb6ad72d56b05b31d92e2f5d8'
+hash-format = 'sha1'
+mode = 'metadata:curseforge'
+url = ''
+
+[update.curseforge]
+file-id = 2820815
+project-id = 307806

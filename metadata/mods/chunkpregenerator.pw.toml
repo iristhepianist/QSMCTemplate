@@ -1,0 +1,17 @@
+filename = 'Chunk-Pregenerator-1.12.2-4.4.9.1.jar'
+name = 'Chunk-Pregenerator'
+side = ''
+x-prismlauncher-loaders = [ 'forge' ]
+x-prismlauncher-mc-versions = [ '1.12.2' ]
+x-prismlauncher-release-type = 'release'
+x-prismlauncher-version-number = 'Chunk-Pregenerator-1.12.2-4.4.9.1'
+
+[download]
+hash = 'f3b7ccd022b2e123ec9eab45b0ab416c5aa542fb'
+hash-format = 'sha1'
+mode = 'metadata:curseforge'
+url = ''
+
+[update.curseforge]
+file-id = 7526414
+project-id = 267193

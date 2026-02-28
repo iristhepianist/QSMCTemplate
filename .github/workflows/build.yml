@@ -29,11 +29,6 @@ jobs:
           python update.py
       - name: build
         run: python compile.py
-      - name: Archive artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: modpack
-          path: build/modpack-latest.zip
 
       - name: Create GitHub release
         # only run when the ref is a tag – pushes to main/branches will not create releases

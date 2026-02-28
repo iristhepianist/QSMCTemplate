@@ -97,5 +97,4 @@ using releases.
 ---
 
 See the [Dimension‑Gateway repo](https://github.com/TeamDimensional/Dimension-Gateway)
-for a complete example.
-
+I looked at it for information. It's quite nice.

@@ -16,10 +16,20 @@ import json
 import urllib.request
 import urllib.parse
 
+# TOML library: use built-in tomllib on Python>=3.11, otherwise try tomli.
+# If neither is available in the environment (CI runner may be minimal),
+# install tomli on the fly.
 try:
     import tomllib
 except ImportError:
-    import tomli as tomllib
+    try:
+        import tomli as tomllib
+    except ImportError:
+        # install tomli and retry
+        import subprocess, sys
+        print("tomllib/tomli not found; installing tomli...")
+        subprocess.check_call([sys.executable, "-m", "pip", "install", "tomli"])
+        import tomli as tomllib
 
 
 @dataclasses.dataclass

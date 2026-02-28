@@ -1,6 +1,9 @@
 name: Build modpack
 
 on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
   release:
     types: [published]
 
@@ -27,7 +30,3 @@ jobs:
         with:
           name: modpack
           path: build/modpack-latest.zip
-      - name: Upload to release
-        uses: softprops/action-gh-release@v2
-        with:
-          files: build/modpack-latest.zip

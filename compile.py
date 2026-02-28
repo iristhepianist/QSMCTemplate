@@ -87,6 +87,7 @@ if __name__ == "__main__":
         (rel("minecraft/config"), "minecraft/config"),
         (rel("minecraft/scripts"), "minecraft/scripts"),
         (rel("minecraft/groovy"), "minecraft/groovy"),
+        (rel("minecraft/resourcepacks"), "minecraft/resourcepacks"),
     ]
 
     output_zip = rel("build/modpack-latest.zip")

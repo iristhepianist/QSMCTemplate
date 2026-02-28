@@ -38,7 +38,7 @@ jobs:
         with:
           tag: ${{ github.ref_name }}       # ref_name strips the `refs/tags/` prefix
           name: ${{ github.ref_name }}
-          token: ${{ secrets.PAT }}          # your personal access token – needed for push-triggered runs
+          token: ${{ secrets.GH_PAT }}
           assets: build/modpack-latest.zip   # include the generated ZIP in the release
           overwrite: true                    # update existing release if the tag already exists
           # the action uses the provided token; no need to set GITHUB_TOKEN

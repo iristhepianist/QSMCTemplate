@@ -12,8 +12,14 @@ This is essentially the same approach used by the Dimension‑Gateway pack.
 import os
 import pathlib
 import dataclasses
+import json
 import urllib.request
 import urllib.parse
+
+try:
+    import tomllib
+except ImportError:
+    import tomli as tomllib
 
 
 @dataclasses.dataclass
@@ -43,15 +49,27 @@ def force_inclusion(file: str) -> bool:
 
 
 def import_prism_index(index_file: pathlib.Path, index_path: pathlib.Path):
-    """Convert a Prism-generated JSON index to toml files in metadata/mods.
+    """Convert a Prism-generated index to toml files in metadata/mods.
 
-    The JSON file usually lives at `minecraft/mods/.index`.  Each entry should
-    contain at least a `filename` and preferably a `name` and CurseForge file
-    id.  This routine writes a `.toml` for each entry that doesn't already
-    exist.
+    The index may be a single JSON file (`minecraft/mods/.index`) or a
+    directory containing TOML metadata (as produced by some launchers/pack
+    managers).  The function will ingest whichever format it finds.
     """
     if not index_file.exists():
         return
+
+    # if index_file is a directory, treat its children as already-correct TOML
+    if index_file.is_dir():
+        for child in index_file.iterdir():
+            if child.suffix.lower() != ".toml":
+                continue
+            dest = index_path / child.name
+            if dest.exists():
+                continue
+            dest.write_bytes(child.read_bytes())
+        return
+
+    # otherwise assume it's JSON metadata
     try:
         with open(index_file, "r", encoding="utf-8") as f:
             data = json.load(f)

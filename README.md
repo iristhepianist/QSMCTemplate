@@ -90,8 +90,10 @@ git tag v1.2.3
 git push origin v1.2.3
 ```
 
-Then the workflow will run and use `ref_name` (the tag name) for the release
-name and tag.
+When the workflow runs it will not only create the release, it’ll also attach
+`build/modpack-latest.zip` as an asset.  If you push the same tag again the
+`overwrite: true` option tells the action to update the existing release
+instead of erroring with "already_exists".
 
 Example snippet in your workflow:
 
@@ -103,6 +105,8 @@ Example snippet in your workflow:
     tag: ${{ github.ref_name }}       # drop the refs/ prefix
     name: ${{ github.ref_name }}
     token: ${{ secrets.GH_PAT }}   # <--- supply PAT here
+    assets: build/modpack-latest.zip
+    overwrite: true                # update the release if it already exists
 ```
 
 

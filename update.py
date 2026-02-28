@@ -17,19 +17,25 @@ import urllib.request
 import urllib.parse
 
 # TOML library: use built-in tomllib on Python>=3.11, otherwise try tomli.
-# The import is aliased to tomllib explicitly so the name exists in all cases.
-# If neither library is installed, attempt to install tomli and re-import it.
+# Initialize the name to None so we can detect failures.
+tomllib = None
 try:
     import tomllib as tomllib
 except ImportError:
     try:
         import tomli as tomllib  # type: ignore[no-redef]
-    except ImportError:
-        # install tomli and retry
+    except Exception:
+        # any failure here leaves tomllib None; attempt to install tomli
         import subprocess, sys
-        print("tomllib/tomli not found; installing tomli...")
+        print("tomllib/tomli not found or import error; installing tomli...")
         subprocess.check_call([sys.executable, "-m", "pip", "install", "tomli"])
-        import tomli as tomllib  # type: ignore[no-redef]
+        try:
+            import tomli as tomllib  # type: ignore[no-redef]
+        except Exception:
+            tomllib = None
+
+if tomllib is None:
+    raise RuntimeError("Cannot import tomllib or tomli; update.py requires a TOML parser.")
 
 
 @dataclasses.dataclass
@@ -68,9 +74,9 @@ def import_prism_index(index_file: pathlib.Path, index_path: pathlib.Path):
     if not index_file.exists():
         return
 
-    # if index_file is a directory, treat its children as already-correct TOML
-    # (this must happen before any file I/O to avoid [Errno 21] complaints)
-    if index_file.is_dir():
+    # if index_file is a directory (or symlink to one), treat its children as already-correct TOML
+    # (use os.path.isdir because pathlib.is_dir may return False for symlinks on some systems)
+    if os.path.isdir(index_file):
         for child in index_file.iterdir():
             if child.suffix.lower() != ".toml":
                 continue

@@ -41,19 +41,24 @@ def build_modpack(sources, output_filename):
 
 
 if __name__ == "__main__":
-    # directories relative to the repository root
-    # if you are running inside a launcher instance, the files will typically
-    # live under "minecraft/"; adjust paths accordingly
+    # operate relative to the script's own directory, not the current
+    # working directory.  this prevents the "mods folder imported a directory
+    # too high" problem when someone runs the script from inside
+    # minecraft/ or another subfolder.
+    base = os.path.dirname(os.path.abspath(__file__))
+    def rel(path):
+        return os.path.join(base, path)
 
     # ensure we have a simple instance.cfg as some launchers (Prism) look for
     # it rather than mmc-pack.json.  If the user has provided one already it
     # will be left unchanged; otherwise build one from the minecraft version
     # contained in mmc-pack.json (if present).
-    if not os.path.exists("instance.cfg"):
+    inst_cfg = rel("instance.cfg")
+    if not os.path.exists(inst_cfg):
         mc_version = None
         try:
             import json
-            with open("mmc-pack.json", "r", encoding="utf-8") as f:
+            with open(rel("mmc-pack.json"), "r", encoding="utf-8") as f:
                 data = json.load(f)
             for comp in data.get("components", []):
                 if comp.get("uid") == "net.minecraft":
@@ -61,7 +66,7 @@ if __name__ == "__main__":
                     break
         except Exception:
             pass
-        with open("instance.cfg", "w", encoding="utf-8") as f:
+        with open(inst_cfg, "w", encoding="utf-8") as f:
             f.write("[Instance]\n")
             f.write("name=Modpack\n")
             if mc_version:
@@ -69,21 +74,21 @@ if __name__ == "__main__":
 
     sources = [
         # include the MultiMC/Prism manifest so launchers recognise the pack
-        ("mmc-pack.json", ""),
+        (rel("mmc-pack.json"), ""),
         # include instance.cfg for compatibility with launchers that expect it
-        ("instance.cfg", ""),
+        (inst_cfg, ""),
 
-        ("mods", "mods"),
-        ("minecraft/mods", "mods"),
-        ("minecraft/config", "config"),
-        ("minecraft/scripts", "scripts"),
-        ("minecraft/groovy", "groovy"),
+        (rel("mods"), "mods"),
+        (rel("minecraft/mods"), "mods"),
+        (rel("minecraft/config"), "config"),
+        (rel("minecraft/scripts"), "scripts"),
+        (rel("minecraft/groovy"), "groovy"),
     ]
 
-    output_zip = "build/modpack-latest.zip"
+    output_zip = rel("build/modpack-latest.zip")
 
-    if not os.path.exists("build"):
-        os.makedirs("build")
+    if not os.path.exists(rel("build")):
+        os.makedirs(rel("build"))
 
     build_modpack(sources, output_zip)
     print(f"Modpack zipped successfully: {output_zip}")

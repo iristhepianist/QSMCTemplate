@@ -54,6 +54,12 @@ build the pack for you automatically on GitHub.
    py compile.py     # creates build/modpack-latest.zip (contains manifests)
    ```
 
+   The `compile.py` script is now robust to being invoked from any subdirectory.
+   It always uses the directory where the script lives as the base path, so you
+   don't have to `cd` back to the repo root before running it – for example you
+   can execute `python minecraft\compile.py` if you happen to be in the
+   launcher instance.  Regardless, the resulting ZIP will have the correct
+   layout.
    The builder will automatically generate both an `mmc-pack.json` and a
    minimal `instance.cfg` (if you don't already have one) so that Prism,
    MultiMC and other launchers can recognise the archive.  Inspect the ZIP to

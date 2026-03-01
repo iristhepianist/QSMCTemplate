@@ -1,8 +1,12 @@
 name: Build modpack
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 on:
   push:
-    branches: [ main, 1.20.1-forge ]
+    branches: [ main, 1.20.1 ]
   workflow_dispatch:
   release:
     types: [published]
@@ -25,11 +29,6 @@ jobs:
           python update.py
       - name: build
         run: python compile.py
-      - name: Archive artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: modpack
-          path: build/modpack-latest.zip
 
       - name: Create GitHub release
         # only run when the ref is a tag – pushes to main/branches will not create releases
@@ -38,8 +37,7 @@ jobs:
         with:
           tag: ${{ github.ref_name }}       # ref_name strips the `refs/tags/` prefix
           name: ${{ github.ref_name }}
-          token: ${{ secrets.GH_PAT }}
-          assets: build/modpack-latest.zip   # include the generated ZIP in the release
-          overwrite: true                    # update existing release if the tag already exists
+          token: ${{ secrets.PAT }}          # use the PAT secret you added
+          artifacts: build/modpack-latest.zip # include the generated ZIP in the release
+          allowUpdates: true                 # update existing release if the tag already exists
           # the action uses the provided token; no need to set GITHUB_TOKEN
-
